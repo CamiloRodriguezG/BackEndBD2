@@ -4,63 +4,64 @@ import com.example.demo.model.Estudiante;
 
 public class EstudianteDto {
     
-    private long codigo;
+    private String codigo;
     private String programa_academico;
-    private int matriculas;
-    private String estado;
+    private int num_matriculas;
     private String facultad;
+    private String n_estudiante;
 
+    
+    /*CONTRUCTOR */
+    public EstudianteDto(String codigo, String programa_academico, int num_matriculas, String facultad,
+            String n_estudiante) {
+        this.codigo = codigo;
+        this.programa_academico = programa_academico;
+        this.num_matriculas = num_matriculas;
+        this.facultad = facultad;
+        this.n_estudiante = n_estudiante;
+    }
 
     /*GETTERS */
-    public long getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
     public String getPrograma_academico() {
         return programa_academico;
     }
-    public int getMatriculas() {
-        return matriculas;
-    }
-    public String getEstado() {
-        return estado;
+    public int getNum_matriculas() {
+        return num_matriculas;
     }
     public String getFacultad() {
         return facultad;
     }
+    public String getN_estudiante() {
+        return n_estudiante;
+    }
 
     /*SETTERS */
-    public void setCodigo(long codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
     public void setPrograma_academico(String programa_academico) {
         this.programa_academico = programa_academico;
     }
-    public void setMatriculas(int matriculas) {
-        this.matriculas = matriculas;
-    }
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setNum_matriculas(int num_matriculas) {
+        this.num_matriculas = num_matriculas;
     }
     public void setFacultad(String facultad) {
         this.facultad = facultad;
     }
-
-    public EstudianteDto(long codigo, String programa_academico, int matriculas, String estado, String facultad) {
-        this.codigo = codigo;
-        this.programa_academico = programa_academico;
-        this.matriculas = matriculas;
-        this.estado = estado;
-        this.facultad = facultad;
+    public void setN_estudiante(String n_estudiante) {
+        this.n_estudiante = n_estudiante;
     }
 
     public Estudiante getEstudianteFromDto(){
         Estudiante estudiante = new Estudiante();
         estudiante.setCodigo(codigo);
         estudiante.setPrograma_academico(programa_academico);
-        estudiante.setMatriculas(matriculas);
-        estudiante.setEstado(estado);
+        estudiante.setNum_matriculas(num_matriculas);
         estudiante.setFacultad(facultad);
-
+        estudiante.setN_estudiante(n_estudiante);
         return estudiante;
     }
 }
