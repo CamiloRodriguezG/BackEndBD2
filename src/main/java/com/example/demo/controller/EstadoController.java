@@ -15,7 +15,7 @@ import com.example.demo.service.impl.EstadoServiceImpl;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/convocatoria")
+@RequestMapping("/estado")
 public class EstadoController {
     @Autowired
     private EstadoServiceImpl estadoService;

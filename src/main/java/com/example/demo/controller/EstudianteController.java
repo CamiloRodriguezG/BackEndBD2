@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ import com.example.demo.service.impl.EstudianteServiceImpl;
 public class EstudianteController {
     @Autowired
     EstudianteServiceImpl estudianteService;
+
+    @GetMapping("/all")
+    public List<Estudiante> getAllEstudiantes(){
+        return estudianteService.findAll();
+    }
 
     @GetMapping("/codigo/{codigo}")
     public Optional<Estudiante> porCodigo(@PathVariable(value = "codigo") String codigo){
