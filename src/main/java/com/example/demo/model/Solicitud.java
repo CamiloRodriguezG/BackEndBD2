@@ -4,17 +4,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="\"Solicitud\"")
 public class Solicitud {
 
     @Id
+    @GeneratedValue
     private int id_solicitud;
-    @Column
-    private String estado;
     @Column
     private int puntaje;
     @Column
@@ -61,8 +63,8 @@ public class Solicitud {
     public int getId_solicitud() {
         return id_solicitud;
     }
-    public String getEstado() {
-        return estado;
+    public EstadoSolicitud getEstado() {
+        return id_estado_solicitud;
     }
     public int getPuntaje() {
         return puntaje;
@@ -116,8 +118,8 @@ public class Solicitud {
     public void setId_solicitud(int id_solicitud) {
         this.id_solicitud = id_solicitud;
     }
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado(EstadoSolicitud estado) {
+        this.id_estado_solicitud = estado;
     }
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
@@ -125,6 +127,7 @@ public class Solicitud {
     public void setId_codigo(Estudiante id_codigo) {
         this.id_codigo = id_codigo;
     }
+
     public void setId_evaluador(Evaluador id_evaluador) {
         this.id_evaluador = id_evaluador;
     }

@@ -1,11 +1,19 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.Solicitud;
+import com.example.demo.service.impl.ConvocatoriaServiceImpl;
+import com.example.demo.service.impl.EstadoSolicitudServiceImpl;
+import com.example.demo.service.impl.EstudianteServiceImpl;
+import com.example.demo.service.impl.EvaluadorServiceImpl;
 
 public class SolicitudDto {
+
+    private EstudianteServiceImpl estudianteService;
+    private EstadoSolicitudServiceImpl estadoSolicitudService;
+    private ConvocatoriaServiceImpl convocatoriaService;
+    private EvaluadorServiceImpl evaluadorService;
     
     private int id_solicitud;
-    private String estado;
     private int puntaje;
     private int ingresos_familiares;
     private String sostiene_hogar;
@@ -18,13 +26,16 @@ public class SolicitudDto {
     private String discapacidad;
     private String problema_alimentario;
     private int valor_matricula;
+    private int id_estado_solicitud;
+    private String id_codigo;
+    private String id_evaluador;
+    private String id_periodo;
 
-    public SolicitudDto(int id_solicitud, String estado, int puntaje, int ingresos_familiares, String sostiene_hogar,
+    public SolicitudDto(int id_solicitud, int puntaje, int ingresos_familiares, String sostiene_hogar,
             String vive_fuera_familia, String se_autosustenta, String personas_acargo, String vive_empleador,
             String condicion_especial, String zona_vulnerabilidad, String discapacidad, String problema_alimentario,
-            int valor_matricula) {
+            int valor_matricula, int id_estado_solicitud, String id_codigo, String id_evaluador, String id_periodo) {
         this.id_solicitud = id_solicitud;
-        this.estado = estado;
         this.puntaje = puntaje;
         this.ingresos_familiares = ingresos_familiares;
         this.sostiene_hogar = sostiene_hogar;
@@ -37,12 +48,21 @@ public class SolicitudDto {
         this.discapacidad = discapacidad;
         this.problema_alimentario = problema_alimentario;
         this.valor_matricula = valor_matricula;
+        this.id_estado_solicitud = id_estado_solicitud;
+        this.id_codigo = id_codigo;
+        this.id_evaluador = id_evaluador;
+        this.id_periodo = id_periodo;
     }
+
+    
+
 
 
     public int getId_solicitud() {
         return id_solicitud;
     }
+
+
 
 
 
@@ -52,21 +72,13 @@ public class SolicitudDto {
 
 
 
-    public String getEstado() {
-        return estado;
-    }
-
-
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
 
 
     public int getPuntaje() {
         return puntaje;
     }
+
+
 
 
 
@@ -76,9 +88,13 @@ public class SolicitudDto {
 
 
 
+
+
     public int getIngresos_familiares() {
         return ingresos_familiares;
     }
+
+
 
 
 
@@ -88,9 +104,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getSostiene_hogar() {
         return sostiene_hogar;
     }
+
+
 
 
 
@@ -100,9 +120,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getVive_fuera_familia() {
         return vive_fuera_familia;
     }
+
+
 
 
 
@@ -112,9 +136,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getSe_autosustenta() {
         return se_autosustenta;
     }
+
+
 
 
 
@@ -124,9 +152,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getPersonas_acargo() {
         return personas_acargo;
     }
+
+
 
 
 
@@ -136,9 +168,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getVive_empleador() {
         return vive_empleador;
     }
+
+
 
 
 
@@ -148,9 +184,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getCondicion_especial() {
         return condicion_especial;
     }
+
+
 
 
 
@@ -160,9 +200,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getZona_vulnerabilidad() {
         return zona_vulnerabilidad;
     }
+
+
 
 
 
@@ -172,9 +216,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getDiscapacidad() {
         return discapacidad;
     }
+
+
 
 
 
@@ -184,9 +232,13 @@ public class SolicitudDto {
 
 
 
+
+
     public String getProblema_alimentario() {
         return problema_alimentario;
     }
+
+
 
 
 
@@ -196,9 +248,13 @@ public class SolicitudDto {
 
 
 
+
+
     public int getValor_matricula() {
         return valor_matricula;
     }
+
+
 
 
 
@@ -208,10 +264,75 @@ public class SolicitudDto {
 
 
 
+
+
+    public int getId_estado_solicitud() {
+        return id_estado_solicitud;
+    }
+
+
+
+
+
+    public void setId_estado_solicitud(int id_estado_solicitud) {
+        this.id_estado_solicitud = id_estado_solicitud;
+    }
+
+
+
+
+
+    public String getId_codigo() {
+        return id_codigo;
+    }
+
+
+
+
+
+    public void setId_codigo(String id_codigo) {
+        this.id_codigo = id_codigo;
+    }
+
+
+
+
+
+    public String getId_evaluador() {
+        return id_evaluador;
+    }
+
+
+
+
+
+    public void setId_evaluador(String id_evaluador) {
+        this.id_evaluador = id_evaluador;
+    }
+
+
+
+
+
+    public String getId_periodo() {
+        return id_periodo;
+    }
+
+
+
+
+
+    public void setId_periodo(String id_periodo) {
+        this.id_periodo = id_periodo;
+    }
+
+
+
+
+
     public Solicitud getSolicitudFromDto(){
         Solicitud solicitud = new Solicitud();
         solicitud.setId_solicitud(id_solicitud);
-        solicitud.setEstado(estado);
         solicitud.setPuntaje(puntaje);
         solicitud.setIngresos_familiares(ingresos_familiares);
         solicitud.setSostiene_hogar(sostiene_hogar);
@@ -224,7 +345,10 @@ public class SolicitudDto {
         solicitud.setDiscapacidad(discapacidad);
         solicitud.setProblema_alimentario(problema_alimentario);
         solicitud.setValor_matricula(valor_matricula);
-
+        solicitud.setId_codigo(estudianteService.findByCodigo(id_codigo).get());
+        solicitud.setEstado(estadoSolicitudService.findById(id_estado_solicitud).get());
+        solicitud.setId_periodo(convocatoriaService.findByPeriodo(id_periodo).get());
+        solicitud.setId_evaluador(evaluadorService.findById(id_evaluador).get());
         return solicitud;
     }
 
