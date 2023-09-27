@@ -28,7 +28,7 @@ public class EstudianteServiceImpl implements EstudianteService{
     }
 
     @Override
-    public Optional<Estudiante> findByCodigo(Long codigo) {
+    public Optional<Estudiante> findByCodigo(String codigo) {
         return estudianteDao.findById(codigo);
     }
     

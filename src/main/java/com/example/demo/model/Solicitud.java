@@ -43,7 +43,7 @@ public class Solicitud {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_estado_solicitud")
-    private Estudiante id_estado_solicitud;
+    private EstadoSolicitud id_estado_solicitud;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_codigo")
@@ -109,7 +109,7 @@ public class Solicitud {
     public int getValor_matricula() {
         return valor_matricula;
     }
-    public Estudiante getId_estado_solicitud() {
+    public EstadoSolicitud getId_estado_solicitud() {
         return id_estado_solicitud;
     }
     /*SETTERS */
@@ -164,7 +164,7 @@ public class Solicitud {
     public void setValor_matricula(int valor_matricula) {
         this.valor_matricula = valor_matricula;
     }
-    public void setId_estado_solicitud(Estudiante id_estado_solicitud) {
+    public void setId_estado_solicitud(EstadoSolicitud id_estado_solicitud) {
         this.id_estado_solicitud = id_estado_solicitud;
     }
     

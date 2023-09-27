@@ -7,12 +7,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "\"Estudiante\"")
 public class Estudiante {
     
     @Id
-    private String codigo;
+    private String id_codigo;
     @Column
     private String programa_academico;
     @Column
@@ -24,17 +26,17 @@ public class Estudiante {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_estado")
-    private Estado estado;
+    private Estado id_estado;
 
     /*SETTERS */
     public void setCodigo(String codigo) {
-        this.codigo = codigo;
+        this.id_codigo = codigo;
     }
     public void setPrograma_academico(String programa_academico) {
         this.programa_academico = programa_academico;
     }
     public void setEstado(Estado estado) {
-        this.estado = estado;
+        this.id_estado = estado;
     }
     public void setNum_matriculas(int num_matriculas) {
         this.num_matriculas = num_matriculas;
@@ -48,7 +50,7 @@ public class Estudiante {
     
     /*GETTERS */
     public String getCodigo() {
-        return codigo;
+        return id_codigo;
     }
     public String getPrograma_academico() {
         return programa_academico;
@@ -60,7 +62,7 @@ public class Estudiante {
         return n_estudiante;
     }
     public Estado getEstado() {
-        return estado;
+        return id_estado;
     }
     public String getFacultad() {
         return facultad;

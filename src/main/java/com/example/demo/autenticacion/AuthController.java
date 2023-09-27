@@ -23,6 +23,16 @@ public class AuthController {
 
     @PostMapping("/connect")
     public void connectToDatabase(@RequestBody Usuario usuario) throws SQLException {
+
+        /*
+        DriverManagerDataSource dataS = new DriverManagerDataSource();
+        dataS.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+        dataS.setUrl("jdbc:oracle:thin:@localhost:1521/orclpdb");
+        dataS.setUsername(usuario.getUsername());
+        dataS.setPassword(usuario.getPassword());
+        dataS.getConnection();
+        */
+
     }
 
     @PostMapping("/createestudiante")

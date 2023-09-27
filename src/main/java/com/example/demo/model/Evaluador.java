@@ -7,8 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "\"Evaluador\"")
 public class Evaluador {
     @Id
     private String id_evaluador;
@@ -17,7 +19,7 @@ public class Evaluador {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_estado")
-    private Estado estado;
+    private Estado id_estado;
     
     /*GETTERS */
     public String getId_evaluador() {
@@ -27,7 +29,7 @@ public class Evaluador {
         return n_evaluador;
     }
     public Estado getEstado() {
-        return estado;
+        return id_estado;
     }
 
     /*SETTERS */
@@ -38,7 +40,7 @@ public class Evaluador {
         this.n_evaluador = n_evaluador;
     }
     public void setEstado(Estado estado) {
-        this.estado = estado;
+        this.id_estado = estado;
     }
 
     

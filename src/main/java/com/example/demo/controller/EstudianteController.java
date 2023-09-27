@@ -20,7 +20,7 @@ public class EstudianteController {
     EstudianteServiceImpl estudianteService;
 
     @GetMapping("/codigo/{codigo}")
-    public Optional<Estudiante> porCodigo(@PathVariable(value = "codigo") Long codigo){
+    public Optional<Estudiante> porCodigo(@PathVariable(value = "codigo") String codigo){
         return estudianteService.findByCodigo(codigo);
     }
 }
