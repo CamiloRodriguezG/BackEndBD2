@@ -16,7 +16,34 @@ public class Solicitud {
     @Column
     private String estado;
     @Column
-    private String puntaje;
+    private int puntaje;
+    @Column
+    private int ingresos_familiares;
+    @Column
+    private String sostiene_hogar;
+    @Column
+    private String vive_fuera_familia;
+    @Column
+    private String se_autosustenta;
+    @Column
+    private String personas_acargo;
+    @Column
+    private String vive_empleador;
+    @Column
+    private String condicion_especial;
+    @Column
+    private String zona_vulnerabilidad;
+    @Column
+    private String discapacidad;
+    @Column
+    private String problema_alimentario;
+    @Column
+    private int valor_matricula;
+    
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "id_estado_solicitud")
+    private Estudiante id_estado_solicitud;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_codigo")
@@ -37,7 +64,7 @@ public class Solicitud {
     public String getEstado() {
         return estado;
     }
-    public String getPuntaje() {
+    public int getPuntaje() {
         return puntaje;
     }
     public Estudiante getId_codigo() {
@@ -49,7 +76,42 @@ public class Solicitud {
     public Convocatoria getId_periodo() {
         return id_periodo;
     }
-
+    public int getIngresos_familiares() {
+        return ingresos_familiares;
+    }
+    public String getSostiene_hogar() {
+        return sostiene_hogar;
+    }
+    public String getVive_fuera_familia() {
+        return vive_fuera_familia;
+    }
+    public String getSe_autosustenta() {
+        return se_autosustenta;
+    }
+    public String getPersonas_acargo() {
+        return personas_acargo;
+    }
+    public String getVive_empleador() {
+        return vive_empleador;
+    }
+    public String getCondicion_especial() {
+        return condicion_especial;
+    }
+    public String getZona_vulnerabilidad() {
+        return zona_vulnerabilidad;
+    }
+    public String getDiscapacidad() {
+        return discapacidad;
+    }
+    public String getProblema_alimentario() {
+        return problema_alimentario;
+    }
+    public int getValor_matricula() {
+        return valor_matricula;
+    }
+    public Estudiante getId_estado_solicitud() {
+        return id_estado_solicitud;
+    }
     /*SETTERS */
     public void setId_solicitud(int id_solicitud) {
         this.id_solicitud = id_solicitud;
@@ -57,7 +119,7 @@ public class Solicitud {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    public void setPuntaje(String puntaje) {
+    public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
     public void setId_codigo(Estudiante id_codigo) {
@@ -69,5 +131,42 @@ public class Solicitud {
     public void setId_periodo(Convocatoria id_periodo) {
         this.id_periodo = id_periodo;
     }
+    public void setIngresos_familiares(int ingresos_familiares) {
+        this.ingresos_familiares = ingresos_familiares;
+    }
+    public void setSostiene_hogar(String sostiene_hogar) {
+        this.sostiene_hogar = sostiene_hogar;
+    }
+    public void setVive_fuera_familia(String vive_fuera_familia) {
+        this.vive_fuera_familia = vive_fuera_familia;
+    }
+    public void setSe_autosustenta(String se_autosustenta) {
+        this.se_autosustenta = se_autosustenta;
+    }
+    public void setPersonas_acargo(String personas_acargo) {
+        this.personas_acargo = personas_acargo;
+    }
+    public void setVive_empleador(String vive_empleador) {
+        this.vive_empleador = vive_empleador;
+    }
+    public void setCondicion_especial(String condicion_especial) {
+        this.condicion_especial = condicion_especial;
+    }
+    public void setZona_vulnerabilidad(String zona_vulnerabilidad) {
+        this.zona_vulnerabilidad = zona_vulnerabilidad;
+    }
+    public void setDiscapacidad(String discapacidad) {
+        this.discapacidad = discapacidad;
+    }
+    public void setProblema_alimentario(String problema_alimentario) {
+        this.problema_alimentario = problema_alimentario;
+    }
+    public void setValor_matricula(int valor_matricula) {
+        this.valor_matricula = valor_matricula;
+    }
+    public void setId_estado_solicitud(Estudiante id_estado_solicitud) {
+        this.id_estado_solicitud = id_estado_solicitud;
+    }
+    
 
 }

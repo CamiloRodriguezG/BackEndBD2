@@ -1,8 +1,12 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Evaluador {
@@ -10,8 +14,10 @@ public class Evaluador {
     private String id_evaluador;
     @Column
     private String n_evaluador;
-    @Column
-    private String estado;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "id_estado")
+    private Estado estado;
     
     /*GETTERS */
     public String getId_evaluador() {
@@ -20,7 +26,7 @@ public class Evaluador {
     public String getN_evaluador() {
         return n_evaluador;
     }
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
@@ -31,7 +37,7 @@ public class Evaluador {
     public void setN_evaluador(String n_evaluador) {
         this.n_evaluador = n_evaluador;
     }
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 
