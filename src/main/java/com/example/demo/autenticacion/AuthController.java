@@ -22,8 +22,18 @@ public class AuthController {
     private DataSource dataSource;
 
     @PostMapping("/connect")
-    public void connectToDatabase(@RequestBody Usuario usuario) throws SQLException {
-
+    public String connectToDatabase(@RequestBody Usuario usuario) throws SQLException {
+        try (Connection connection = dataSource.getConnection()) {
+            String sqlCreacion = "CONNECT " + usuario.getUsername() + "/" + usuario.getPassword()+ "@orclpdb";
+            try (Statement statement = connection.createStatement()) {
+                // statement.
+                statement.executeUpdate(sqlCreacion);
+            }
+            return "Conexion realizada";
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return e.getMessage();
+        }
         /*
         DriverManagerDataSource dataS = new DriverManagerDataSource();
         dataS.setDriverClassName("oracle.jdbc.driver.OracleDriver");
@@ -38,14 +48,22 @@ public class AuthController {
     @PostMapping("/createestudiante")
     public String crearNuevoUsuario(@RequestBody Usuario usuario) {
         try (Connection connection = dataSource.getConnection()) {
-            String sqlCreacion = "CREATE USER " + usuario.getUsername() + " IDENTIFIED BY " + usuario.getPassword()+ "DEFAULT TABLESPACE ESTDFLT TEMPORARY TABLESPACE ESTTMP";
+            String sqlCreacion = "CREATE USER " + usuario.getUsername() + " IDENTIFIED BY " + usuario.getPassword();
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate(sqlCreacion);
+            }
+            String sqlGrantRole = "GRANT CONNECT TO "+usuario.getUsername();
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate(sqlGrantRole);
+            }
+            /*String sqlCreacion = "CREATE USER " + usuario.getUsername() + " IDENTIFIED BY " + usuario.getPassword()+ "DEFAULT TABLESPACE ESTDFLT TEMPORARY TABLESPACE ESTTMP";
             try (Statement statement = connection.createStatement()) {
                 statement.executeUpdate(sqlCreacion);
             }
             String sqlGrantRole = "GRANT ESTUDIANTE TO "+usuario.getUsername();
             try (Statement statement = connection.createStatement()) {
                 statement.executeUpdate(sqlGrantRole);
-            }
+            }*/
             return "Estudiante agregado";
         } catch (SQLException e) {
             System.out.println(e.getMessage());
