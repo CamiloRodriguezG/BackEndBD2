@@ -22,11 +22,19 @@ public class EstudianteController {
 
     @GetMapping("/all")
     public List<Estudiante> getAllEstudiantes(){
-        return estudianteService.findAll();
+        try {
+            return estudianteService.findAll();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
 
     @GetMapping("/codigo/{codigo}")
     public Optional<Estudiante> porCodigo(@PathVariable(value = "codigo") String codigo){
-        return estudianteService.findByCodigo(codigo);
+        try {
+            return estudianteService.findByCodigo(codigo);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
 }

@@ -22,11 +22,19 @@ public class EstadoController {
 
     @GetMapping("/all")
     private List<Estado> findAllEstados(){
-        return estadoService.findAll();
+        try {
+            return estadoService.findAll();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
 
     @GetMapping("/id/{id}")
     public Optional<Estado> porId(@PathVariable(value = "id") int id){
-        return estadoService.findById(id);
+        try {
+            return estadoService.findById(id);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
 }

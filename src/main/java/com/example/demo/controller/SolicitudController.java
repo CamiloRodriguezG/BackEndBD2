@@ -23,17 +23,29 @@ public class SolicitudController {
 
     @GetMapping("/all")
     public List<Solicitud> findAllSolicitudes(){
-        return solicitudService.findAll();
+        try {
+            return solicitudService.findAll();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
 
     @PostMapping("/add")
     public Solicitud createSolicitud(@RequestBody SolicitudDto solicitudDto){
-        return solicitudService.saveSolicitud(solicitudDto);
+        try {
+            return solicitudService.saveSolicitud(solicitudDto);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
 
     @PostMapping("/update")
     public Solicitud updateSolicitud(@RequestBody SolicitudDto solicitudDto){
-        return solicitudService.updateSolicitud(solicitudDto);
+        try {
+            return solicitudService.updateSolicitud(solicitudDto);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
 
 }

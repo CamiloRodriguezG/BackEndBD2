@@ -22,12 +22,20 @@ public class ConvocatoriaController {
 
     @GetMapping("/all")
     public List<Convocatoria> getAllConvocatorias(){
-        return convocatoriaService.findAll();
+        try {
+            return convocatoriaService.findAll();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
 
     @GetMapping("/periodo/{periodo}")
     public Optional<Convocatoria> porPeriodo(@PathVariable(value = "periodo") String periodo){
-        return convocatoriaService.findByPeriodo(periodo);
+        try {
+            return convocatoriaService.findByPeriodo(periodo);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        }
     }
     
 }

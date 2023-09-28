@@ -1,18 +1,8 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.Solicitud;
-import com.example.demo.service.impl.ConvocatoriaServiceImpl;
-import com.example.demo.service.impl.EstadoSolicitudServiceImpl;
-import com.example.demo.service.impl.EstudianteServiceImpl;
-import com.example.demo.service.impl.EvaluadorServiceImpl;
 
 public class SolicitudDto {
-
-    private EstudianteServiceImpl estudianteService;
-    private EstadoSolicitudServiceImpl estadoSolicitudService;
-    private ConvocatoriaServiceImpl convocatoriaService;
-    private EvaluadorServiceImpl evaluadorService;
-    
     private int id_solicitud;
     private int puntaje;
     private int ingresos_familiares;
@@ -332,7 +322,7 @@ public class SolicitudDto {
 
     public Solicitud getSolicitudFromDto(){
         Solicitud solicitud = new Solicitud();
-        solicitud.setId_solicitud(id_solicitud);
+        // solicitud.setId_solicitud(id_solicitud);
         solicitud.setPuntaje(puntaje);
         solicitud.setIngresos_familiares(ingresos_familiares);
         solicitud.setSostiene_hogar(sostiene_hogar);
@@ -345,10 +335,10 @@ public class SolicitudDto {
         solicitud.setDiscapacidad(discapacidad);
         solicitud.setProblema_alimentario(problema_alimentario);
         solicitud.setValor_matricula(valor_matricula);
-        solicitud.setId_codigo(estudianteService.findByCodigo(id_codigo).get());
-        solicitud.setEstado(estadoSolicitudService.findById(id_estado_solicitud).get());
-        solicitud.setId_periodo(convocatoriaService.findByPeriodo(id_periodo).get());
-        solicitud.setId_evaluador(evaluadorService.findById(id_evaluador).get());
+        solicitud.setId_codigo(id_codigo);
+        solicitud.setId_estado_solicitud(id_estado_solicitud);
+        solicitud.setId_periodo(id_periodo);
+        solicitud.setId_evaluador(id_evaluador);
         return solicitud;
     }
 

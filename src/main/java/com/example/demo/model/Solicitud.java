@@ -1,13 +1,10 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -41,7 +38,15 @@ public class Solicitud {
     private String problema_alimentario;
     @Column
     private int valor_matricula;
-    
+    @Column
+    private int id_estado_solicitud;
+    @Column
+    private String id_codigo;
+    @Column
+    private String id_evaluador;
+    @Column
+    private String id_periodo;
+    /*
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_estado_solicitud")
@@ -58,24 +63,22 @@ public class Solicitud {
     @ManyToOne
     @JoinColumn(name = "id_periodo")
     private Convocatoria id_periodo;
+    */
 
     /*GETTERS */
     public int getId_solicitud() {
         return id_solicitud;
     }
-    public EstadoSolicitud getEstado() {
-        return id_estado_solicitud;
-    }
     public int getPuntaje() {
         return puntaje;
     }
-    public Estudiante getId_codigo() {
+    public String getId_codigo() {
         return id_codigo;
     }
-    public Evaluador getId_evaluador() {
+    public String getId_evaluador() {
         return id_evaluador;
     }
-    public Convocatoria getId_periodo() {
+    public String getId_periodo() {
         return id_periodo;
     }
     public int getIngresos_familiares() {
@@ -111,27 +114,24 @@ public class Solicitud {
     public int getValor_matricula() {
         return valor_matricula;
     }
-    public EstadoSolicitud getId_estado_solicitud() {
+    public int getId_estado_solicitud() {
         return id_estado_solicitud;
     }
     /*SETTERS */
     public void setId_solicitud(int id_solicitud) {
         this.id_solicitud = id_solicitud;
     }
-    public void setEstado(EstadoSolicitud estado) {
-        this.id_estado_solicitud = estado;
-    }
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
-    public void setId_codigo(Estudiante id_codigo) {
+    public void setId_codigo(String id_codigo) {
         this.id_codigo = id_codigo;
     }
 
-    public void setId_evaluador(Evaluador id_evaluador) {
+    public void setId_evaluador(String id_evaluador) {
         this.id_evaluador = id_evaluador;
     }
-    public void setId_periodo(Convocatoria id_periodo) {
+    public void setId_periodo(String id_periodo) {
         this.id_periodo = id_periodo;
     }
     public void setIngresos_familiares(int ingresos_familiares) {
@@ -167,7 +167,7 @@ public class Solicitud {
     public void setValor_matricula(int valor_matricula) {
         this.valor_matricula = valor_matricula;
     }
-    public void setId_estado_solicitud(EstadoSolicitud id_estado_solicitud) {
+    public void setId_estado_solicitud(int id_estado_solicitud) {
         this.id_estado_solicitud = id_estado_solicitud;
     }
     

@@ -36,7 +36,7 @@ public class AuthController {
     }
 
     @PostMapping("/createestudiante")
-    public void crearNuevoUsuario(@RequestBody Usuario usuario) {
+    public String crearNuevoUsuario(@RequestBody Usuario usuario) {
         try (Connection connection = dataSource.getConnection()) {
             String sqlCreacion = "CREATE USER " + usuario.getUsername() + " IDENTIFIED BY " + usuario.getPassword()+ "DEFAULT TABLESPACE ESTDFLT TEMPORARY TABLESPACE ESTTMP";
             try (Statement statement = connection.createStatement()) {
@@ -46,8 +46,10 @@ public class AuthController {
             try (Statement statement = connection.createStatement()) {
                 statement.executeUpdate(sqlGrantRole);
             }
+            return "Estudiante agregado";
         } catch (SQLException e) {
-            System.out.println("problema");
+            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 }
