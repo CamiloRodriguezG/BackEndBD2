@@ -9,6 +9,7 @@ public class ConvocatoriaDto {
     private int numero_beneficiarios;
     private Date f_inicio_solicitud;
     private Date f_fin_solicitud;
+    private String documentacion;
 
     /*SETTERS */
     public void setPeriodo(String periodo) {
@@ -23,6 +24,10 @@ public class ConvocatoriaDto {
     public void setF_fin_solicitud(Date f_fin_solicitud) {
         this.f_fin_solicitud = f_fin_solicitud;
     }
+    public void setDocumentacion(String documentacion) {
+        this.documentacion = documentacion;
+    }
+    
 
     /*GETTERS */
     public String getPeriodo() {
@@ -37,12 +42,16 @@ public class ConvocatoriaDto {
     public Date getF_fin_solicitud() {
         return f_fin_solicitud;
     }
+    public String getDocumentacion() {
+        return documentacion;
+    }
 
-    public ConvocatoriaDto(String periodo, int numero_beneficiarios, Date f_inicio_solicitud, Date f_fin_solicitud) {
+    public ConvocatoriaDto(String periodo, int numero_beneficiarios, Date f_inicio_solicitud, Date f_fin_solicitud, String documentacion) {
         this.periodo = periodo;
         this.numero_beneficiarios = numero_beneficiarios;
         this.f_inicio_solicitud = f_inicio_solicitud;
         this.f_fin_solicitud = f_fin_solicitud;
+        this.documentacion = documentacion;
     }
 
     public Convocatoria getConvocatoriaFromDto(){
@@ -51,7 +60,7 @@ public class ConvocatoriaDto {
         convocatoria.setNumero_beneficiarios(numero_beneficiarios);
         convocatoria.setF_inicio_solicitud(f_inicio_solicitud);
         convocatoria.setF_fin_solicitud(f_fin_solicitud);
-        
+        convocatoria.setDocumentacion(documentacion);
         return convocatoria; 
     }
 
