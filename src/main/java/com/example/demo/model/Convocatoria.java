@@ -20,7 +20,7 @@ public class Convocatoria {
     @Column
     private Date f_fin_solicitud;
     @Column
-    private String documentacion;
+    private String etapas;
 
     /*SETTERS */
     public void setPeriodo(String periodo) {
@@ -35,16 +35,14 @@ public class Convocatoria {
     public void setF_fin_solicitud(Date f_fin_solicitud) {
         this.f_fin_solicitud = f_fin_solicitud;
     }
-    
-
     public void setId_periodo(String id_periodo) {
         this.id_periodo = id_periodo;
     }
     public void setNum_beneficiarios(int num_beneficiarios) {
         this.num_beneficiarios = num_beneficiarios;
     }
-    public void setDocumentacion(String documentacion) {
-        this.documentacion = documentacion;
+    public void setEtapas(String etapas) {
+        this.etapas = etapas;
     }
     /*GETTERS */
     public String getPeriodo() {
@@ -65,8 +63,8 @@ public class Convocatoria {
     public int getNum_beneficiarios() {
         return num_beneficiarios;
     }
-    public String getDocumentacion() {
-        return documentacion;
+    public String getEtapas() {
+        return etapas;
     }
 
     
