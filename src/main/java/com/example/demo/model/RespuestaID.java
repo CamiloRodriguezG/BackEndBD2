@@ -9,6 +9,12 @@ public class RespuestaID {
     private int id_requerimiento;
     @Column
     private int id_solicitud;
+
+    
+    public RespuestaID(int id_requerimiento, int id_solicitud) {
+        this.id_requerimiento = id_requerimiento;
+        this.id_solicitud = id_solicitud;
+    }
     public int getId_requerimiento() {
         return id_requerimiento;
     }

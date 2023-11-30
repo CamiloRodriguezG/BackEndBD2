@@ -1,14 +1,9 @@
 package com.example.demo.dto;
 
 import java.sql.Date;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.demo.dao.ConvocatoriaDao;
-import com.example.demo.dao.EstudianteDao;
-import com.example.demo.model.Convocatoria;
-import com.example.demo.model.Estudiante;
 import com.example.demo.model.Solicitud;
 import com.example.demo.service.impl.ConvocatoriaServiceImpl;
 import com.example.demo.service.impl.EstudianteServiceImpl;
@@ -16,9 +11,9 @@ import com.example.demo.service.impl.EstudianteServiceImpl;
 public class SolicitudDto {
 
     @Autowired
-    EstudianteDao estudianteService;
+    EstudianteServiceImpl estudianteService;
     @Autowired
-    ConvocatoriaDao convocatoriaService;
+    ConvocatoriaServiceImpl convocatoriaService;
     
     private int id_solicitud;
     private int puntaje;
@@ -127,10 +122,6 @@ public class SolicitudDto {
 
     public Solicitud getSolicitudFromDto(){
         Solicitud solicitud = new Solicitud();
-        Optional<Estudiante> estudiante = estudianteService.findById(id_codigo);
-        Optional<Convocatoria> convocatoria = convocatoriaService.findById(id_periodo);
-        solicitud.setId_codigo(estudiante.get());
-        solicitud.setId_periodo(convocatoria.get());
         solicitud.setId_solicitud(id_solicitud);
         solicitud.setLinkdocumentos(linkdocumentos);
         solicitud.setF_radicacion(f_radicacion);

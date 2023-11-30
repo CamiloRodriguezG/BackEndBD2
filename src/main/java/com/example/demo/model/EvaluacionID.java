@@ -11,7 +11,14 @@ public class EvaluacionID {
     private int id_requerimiento;
     @Column
     private int id_solicitud;
+
     
+    
+    public EvaluacionID(String id_evaluador, int id_requerimiento, int id_solicitud) {
+        this.id_evaluador = id_evaluador;
+        this.id_requerimiento = id_requerimiento;
+        this.id_solicitud = id_solicitud;
+    }
     public String getId_evaluador() {
         return id_evaluador;
     }

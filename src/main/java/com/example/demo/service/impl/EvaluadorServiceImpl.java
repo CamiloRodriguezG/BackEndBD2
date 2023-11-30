@@ -4,14 +4,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.EvaludaroDao;
+import com.example.demo.dao.EvaluadorDao;
 import com.example.demo.model.Evaluador;
 import com.example.demo.service.EvaluadorService;
 
+@Service(value = "evaluadorService")
 public class EvaluadorServiceImpl implements EvaluadorService{
     @Autowired
-    EvaludaroDao evaludaroDao;
+    EvaluadorDao evaludaroDao;
 
     @Override
     public List<Evaluador> findAll() {
